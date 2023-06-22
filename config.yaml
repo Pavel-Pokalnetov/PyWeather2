@@ -1,0 +1,10 @@
+- city: moscow
+  cityname: Москва
+  email:
+  - email1@example.com
+  - email2@example.com
+
+- city: saint_petersburg
+  cityname: Санкт-Петербург
+  email:
+  - email3@example.com
