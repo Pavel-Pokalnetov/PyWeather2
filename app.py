@@ -1,4 +1,5 @@
 import yaml
+import htmlmin
 from jinja2 import Template
 from modules import get_current_datetime
 from modules import get_weather48
@@ -21,10 +22,10 @@ def send_weather_city(city, emails, city_name=""):
 
     html = html_template.render(city_name=city_name,
                                 datetime_now=get_current_datetime(),
-                                weather_now=get_weather_now(city,1),
+                                weather_now=get_weather_now(city),
                                 weather48hours=get_weather48(city),
                                 weather7day=get_weather_7day(city))
-
+    print(htmlmin.minify(html))
     send_html_email(html, emails, city_name)
 
 
