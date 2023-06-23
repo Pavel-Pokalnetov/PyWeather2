@@ -1,12 +1,10 @@
-from pprint import pprint
-from jinja2 import Template
-from modules.mylib import get_current_datetime
-from modules.weather48 import get_weather48
-from modules.weather_now import get_weather_now
-from modules.weather_7day import get_weather_7day
-from modules.emailer import send_html_email
 import yaml
-
+from jinja2 import Template
+from modules import get_current_datetime
+from modules import get_weather48
+from modules import get_weather_now
+from modules import get_weather_7day
+from modules import send_html_email
 
 def send_weather_city(city, emails, city_name=""):
     if city_name == "":
