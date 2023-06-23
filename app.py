@@ -25,7 +25,8 @@ def send_weather_city(city, emails, city_name=""):
                                 weather_now=get_weather_now(city),
                                 weather48hours=get_weather48(city),
                                 weather7day=get_weather_7day(city))
-    print(htmlmin.minify(html))
+    html=htmlmin.minify(html)
+    print(html)
     send_html_email(html, emails, city_name)
 
 
