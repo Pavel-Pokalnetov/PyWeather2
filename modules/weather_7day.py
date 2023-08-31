@@ -85,9 +85,7 @@ def get_weather_7day(city,debug=False):
             weatherdata[index]['weather'] = weather_dict
             index += 1
 
-        html = """<div>
-        <h3>Погода в г. Cалехарде на 7 дней</h3>
-        """
+        html = ""
         table_template = Template("""
     {{ date }}
     <table border="1" style="border-collapse:collapse;width: 1000px;">
