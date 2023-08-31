@@ -5,6 +5,12 @@ from jinja2 import Template
 
 
 def get_weather_stats(weather_dict: dict):
+    '''
+    получение и обработка статистики по температурным данным:
+    расчет минимальной, максимальной и среднесуточной температуры
+    :param weather_dict: словарь с погодными данными
+    :return: min_temp, max_temp, avg_temp: значение минимальной максимальной и средней дневной температуры
+    '''
     min_temp = max_temp = None
     avg_temp = 0
     for item in weather_dict.values():
@@ -23,6 +29,12 @@ def get_weather_stats(weather_dict: dict):
 
 
 def get_weather_7day(city,debug=False):
+    '''
+    получение блока погоды на неделю
+    :param city: - идентификатор города
+    :param debug: - флаг отладки (False - отладка выкл)
+    :return: - блок HTML кода со таблицей погодных данных
+    '''
     try:
         # URL страницы с прогнозом погоды
         url = f'https://world-weather.ru/pogoda/russia/{city}/7days/'
@@ -150,8 +162,6 @@ def get_weather_7day(city,debug=False):
 
         for i in (0, 1, 2, 3, 4, 5, 6):
             html += table_template.render(weatherdata[i])
-
-        html += '</div>'
 
         if debug:
             with open('./temp/w_7day.html', 'w', encoding='utf8') as htmlfile:

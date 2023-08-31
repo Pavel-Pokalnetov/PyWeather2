@@ -9,17 +9,25 @@ from modules import send_html_email
 
 
 def send_weather_city(city, emails, city_name=""):
+    '''
+    формирование HTML кода со сводками погоды и отправка его на почтовые адреса
+    :param city:  идентификатор города
+    :param emails:  список адресов
+    :param city_name: название города (для обозначения в сводке)
+    :return:
+    '''
     if city_name == "":
         city_name = city
     html_template = Template(
         """<html>
             <title>Сводка погоды для .г{{city_name}} на {{datetime_now}}</title>
             <body>
-            <h3>Сводка погоды для г.{{city_name}} на {{datetime_now}}</h3>
-            {{weather_now}}
-            {{weather48hours}}
-            <h3>Сводка погоды для г.{{city_name}} на 7 дней</h3>
-            {{weather7day}}
+            <h3>Сводка погоды для г.{{city_name}} на {{datetime_now}}</h3><div>
+            {{weather_now}}</div>
+            <h3>Почасовой прогноз погоды на 48 часов</h3><div>
+            {{weather48hours}}</div>
+            <h3>Сводка погоды для г.{{city_name}} на 7 дней</h3><div>
+            {{weather7day}}</div>
             </body></html>""")
 
     html = html_template.render(city_name=city_name,

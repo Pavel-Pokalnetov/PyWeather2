@@ -3,6 +3,12 @@ from bs4 import BeautifulSoup
 from jinja2 import Template
 
 def get_weather48(city, debug=False):
+    '''
+    Получение блока HTML кода с погодой на 48 часов
+    :param city: - идентификатор города
+    :param debug: - флаг для отладки (Fasle - отладка отключена)
+    :return: - String: блок HTML кода
+    '''
     try:
         # URL страницы с прогнозом погоды
         url = f'https://world-weather.ru/pogoda/russia/{city}/24hours/'
@@ -60,9 +66,7 @@ def get_weather48(city, debug=False):
                     wind_direction + wind_speed])
             htmldate.append(tabble)
         # заготовка для HTML блока
-        html = """<div>
-    <h3>Почасовой прогноз погоды на 48 часов</h3>
-    """
+        html = ""
         # шаблон HTML
         table_template = Template('''
         <b>{{days}}</b>
@@ -91,7 +95,6 @@ def get_weather48(city, debug=False):
         # собираем html по шаблону
         for i in (0, 1, 2):
             html += table_template.render(data=htmldate[i], days=days[i])
-        html+="</div>"
         # сформированный блок (для отладки)
         if debug:
             with open('./temp/w_48.html', 'w', encoding='utf8') as htmlfile:
