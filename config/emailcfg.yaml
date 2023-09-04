@@ -1,0 +1,4 @@
+smtp_server: 192.168.0.6
+smtp_port: 25
+smtp_username: noreply@example.com
+smtp_password: password

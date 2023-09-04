@@ -11,7 +11,7 @@ def get_digits(text):
 def get_current_datetime():
     # получаем время и дату в формате чч:мм ДД.ММ.ГГГГ
     # Установка локали 
-    locale.setlocale(locale.LC_TIME, 'ru_RU')
+    #locale.setlocale(locale.LC_ALL, 'ru_ru')
     
     # Получение текущей даты и времени
     now = datetime.datetime.now()

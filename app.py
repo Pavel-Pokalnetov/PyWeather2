@@ -1,11 +1,8 @@
 import yaml
 import htmlmin
 from jinja2 import Template
-from modules import get_current_datetime
-from modules import get_weather48
-from modules import get_weather_now
-from modules import get_weather_7day
-from modules import send_html_email
+
+from modules import get_weather_now, get_weather48, get_weather_7day, send_html_email, get_current_datetime
 
 
 def send_weather_city(city, emails, city_name=""):
@@ -42,7 +39,7 @@ def send_weather_city(city, emails, city_name=""):
 
 if __name__ == "__main__":
     # считываем конфиг
-    with open("config.yaml", "r", encoding="utf8") as f:
+    with open("./config/config.yaml", "r", encoding="utf8") as f:
         data: dict = yaml.safe_load(f)
 
     # формируем цикл опроса и отправки

@@ -6,13 +6,12 @@ from email.mime.text import MIMEText
 def send_html_email(html, to_emails, city_name):
     """
     Отправляет HTML-письмо на список почтовых адресов.
-
     :param html: HTML-код письма.
     :param to_emails: Список почтовых адресов получателей.
     :param citi_name: Реальное название города
     """
     # 
-    with open('./modules/emailcfg.yaml', 'r') as cfg_file:
+    with open('./config/emailcfg.yaml', 'r') as cfg_file:
         config = yaml.safe_load(cfg_file)
 
     smtp_server = config['smtp_server']
@@ -32,8 +31,8 @@ def send_html_email(html, to_emails, city_name):
         try:
             # Создаем SMTP объект и подключаемся к почтовому серверу
             smtp_connection = smtplib.SMTP(smtp_server, smtp_port)
-            smtp_connection.starttls()
-            smtp_connection.login(smtp_username, smtp_password)
+            #smtp_connection.starttls()
+            #smtp_connection.login(smtp_username, smtp_password)
 
             # Отправляем письмо
             msg['To'] = to_email
